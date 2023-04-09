@@ -2,7 +2,7 @@
 
   <p>这个对应的是最上面窄窄一条</p>
   <el-row
-      v-if="checkLogin"
+      v-if="!checkLogin"
       class="header-row"
       align="middle"
       style="margin-top: 10px"
@@ -26,7 +26,7 @@
   </el-row>
 
   <el-row
-      v-if="!checkLogin"
+      v-if="checkLogin"
       class="header-row"
       align="middle"
       style="margin-top: 10px"
@@ -46,14 +46,16 @@
     </el-col>
   </el-row>
 
+
 </template>
 
 <script>
 export default {
-  name: "header",
+  name: "myHeader",
   computed:{
     checkLogin() {
-      return this.$store.state.user.isLogin;
+      console.log(this.$store.state.isLogin);
+      return this.$store.state.isLogin;
     }
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <shopping-header></shopping-header>
+  <search-bar></search-bar>
   <el-row>
     <el-col :span="8">
       <el-card>
@@ -16,8 +16,11 @@
 </template>
 
 <script>
+import SearchBar from "@/views/shopping/components/searchBar.vue";
+
 export default {
-  name: "oneProduct"
+  name: "oneProduct",
+  components: {SearchBar}
 }
 </script>
 

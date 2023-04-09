@@ -5,7 +5,14 @@ export default createStore({
     isLogin: false,
     username: null,
     userId: null,
-    cart: [],
+    cart:[
+      {
+        id:101,
+        name:'test1',
+        price:1,
+        amount:1
+      },
+    ]
   },
   getters: {
   },
@@ -15,6 +22,21 @@ export default createStore({
     },
     SET_LOGIN: (state, login) => {
       state.isLogin = login
+    },
+    Cart_add: (state,commo) => {
+      state.cart.push(commo)
+    },
+    Cart_modify: (state,id,amount) =>{
+      const index = state.cart.findIndex(c => c.id === id)
+      if (index !== -1) {
+        state.cart[index].amount = amount
+      }
+    },
+    Cart_delete: (state,id) =>{
+      const index = state.cart.findIndex(c => c.id === id)
+      if (index !== -1) {
+        state.cart.splice(index, 1)
+      }
     }
   },
   actions: {

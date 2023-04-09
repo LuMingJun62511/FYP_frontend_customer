@@ -5,73 +5,31 @@ import store from '@/store/index'
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/auth/login.vue'),
+    path: '/home',
+    name: 'homepage',
+    component: () => import('@/views/shopping/homepage.vue'),
   },
-
   {
-    path: '/signup',
-    name: 'Signup',
-    component: () => import('@/views/auth/signup.vue'),
+    path: '/viewProducts',
+    name: 'viewProductsByNameLike',
+    props: route => ({ name: route.query.name }),
+    component: () => import('@/views/shopping/viewProducts.vue'),
   },
-
   {
-    path: '/',
-    name: 'HomeRoot',
-    component: header,
-    redirect: '/home',
-    children: [
-      {
-        path: 'home',
-        name: 'home',
-        component: () => import('@/views/shopping/homepage.vue'),
-      },
-    ],
-    // beforeEnter(to, from, next){
-    //   if (!store.state.isLogin && to.name !== 'Login' ) next({ name: 'Login' })
-    //   else next()
-    // },
+    path: '/viewProducts',
+    name: 'viewProductsById',
+    props: route => ({ id: route.query.id }),
+    component: () => import('@/views/shopping/viewProducts.vue'),
   },
-
-
   {
-    path: '/shopping',
-    name: 'shoppingRoot',
-    component: header,
-    children: [
-      {
-        path: 'viewProducts',
-        name: 'viewProducts',
-        component: () => import('@/views/shopping/viewProducts.vue')
-      },
-      {
-        path: 'product/:id',
-        name: 'product',
-        component: () => import('@/views/shopping/oneProduct.vue')
-      },
-    ],
-    beforeEnter(to, from, next){
-      if (!store.state.isLogin && to.name !== 'Login' ) next({ name: 'Login' })
-      else next()
-    },
+    path: '/product/:id',
+    name: 'product',
+    component: () => import('@/views/shopping/oneProduct.vue'),
   },
-
   {
     path: '/checkout',
-    name: 'checkoutRoot',
-    component: header,
-    children: [
-      {
-        path: 'bill',
-        name: 'bill',
-        component: () => import('@/views/checkout/index.vue')
-      },
-    ],
-    beforeEnter(to, from, next){
-      if (!store.state.isLogin && to.name !== 'Login' ) next({ name: 'Login' })
-      else next()
-    },
+    name: 'checkout',
+    component: () => import('@/views/checkout/index.vue'),
   },
 ]
 
