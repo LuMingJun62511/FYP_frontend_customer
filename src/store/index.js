@@ -12,6 +12,18 @@ export default createStore({
         price:1,
         amount:1
       },
+    ],
+    products:[
+      {
+        id:101,
+        name:'test1',
+        price:1,
+        image:'test1',
+        category:'test1',
+        created_time:'test1',
+        is_low:'test1',
+        amount:1,
+      }
     ]
   },
   getters: {
@@ -22,6 +34,9 @@ export default createStore({
     },
     SET_LOGIN: (state, login) => {
       state.isLogin = login
+    },
+    SET_PRODUCTS(state, products) {
+      state.products = products
     },
     Cart_add: (state,commo) => {
       state.cart.push(commo)
@@ -37,7 +52,8 @@ export default createStore({
       if (index !== -1) {
         state.cart.splice(index, 1)
       }
-    }
+    },
+
   },
   actions: {
   },

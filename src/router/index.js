@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import header from '@/views/layout/header.vue'
 
-import store from '@/store/index'
 
 const routes = [
+  {
+    path: '/:catchAll(.*)',
+    redirect: '/home'
+  },
   {
     path: '/home',
     name: 'homepage',
@@ -12,15 +14,20 @@ const routes = [
   {
     path: '/viewProducts',
     name: 'viewProductsByNameLike',
-    props: route => ({ name: route.query.name }),
     component: () => import('@/views/shopping/viewProducts.vue'),
   },
-  {
-    path: '/viewProducts',
-    name: 'viewProductsById',
-    props: route => ({ id: route.query.id }),
-    component: () => import('@/views/shopping/viewProducts.vue'),
-  },
+  // {
+  //   path: '/viewProducts',
+  //   name: 'viewProductsByNameLike',
+  //   props: route => ({ name: route.query.name }),
+  //   component: () => import('@/views/shopping/viewProducts.vue'),
+  // },
+  // {
+  //   path: '/viewProducts',
+  //   name: 'viewProductsById',
+  //   props: route => ({ id: route.query.id }),
+  //   component: () => import('@/views/shopping/viewProducts.vue'),
+  // },
   {
     path: '/product/:id',
     name: 'product',

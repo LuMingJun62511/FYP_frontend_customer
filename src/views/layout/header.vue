@@ -1,27 +1,32 @@
 <template>
-
-  <p>这个对应的是最上面窄窄一条</p>
   <el-row
       v-if="!checkLogin"
       class="header-row"
       align="middle"
-      style="margin-top: 10px"
   >
     <el-col :span="8" >
       <p>统一每周一配送，请于每周天晚12点前下单</p>
     </el-col>
 
-    <el-col :span="4" :offset="2">
-      <p>登陆</p>
-    </el-col>
-    <el-col :span="4">
-      <p>首页</p>
-    </el-col>
-    <el-col :span="3">
-      <p>会员中心</p>
+    <el-col :span="3" :offset="4">
+      <router-link to="/home" style="text-decoration: none">
+        log in
+      </router-link>
     </el-col>
     <el-col :span="3">
-      <p>orders</p>
+      <router-link to="/home" style="text-decoration: none">
+        home page
+      </router-link>
+    </el-col>
+    <el-col :span="3">
+      <router-link to="/home" style="text-decoration: none">
+        member center
+      </router-link>
+    </el-col>
+    <el-col :span="3">
+      <router-link to="/home" style="text-decoration: none">
+        orders
+      </router-link>
     </el-col>
   </el-row>
 
@@ -29,20 +34,25 @@
       v-if="checkLogin"
       class="header-row"
       align="middle"
-      style="margin-top: 10px"
   >
     <el-col :span="8" >
       <p>统一每周一配送，请于每周天晚12点前下单</p>
     </el-col>
 
-    <el-col :span="4" :offset="6">
-      <p>首页</p>
+    <el-col :span="3" :offset="7">
+      <router-link to="/home" style="text-decoration: none">
+        home page
+      </router-link>
     </el-col>
     <el-col :span="3">
-      <p>会员中心</p>
+      <router-link to="/home" style="text-decoration: none">
+        member center
+      </router-link>
     </el-col>
     <el-col :span="3">
-      <p>orders</p>
+      <router-link to="/home" style="text-decoration: none">
+        orders
+      </router-link>
     </el-col>
   </el-row>
 

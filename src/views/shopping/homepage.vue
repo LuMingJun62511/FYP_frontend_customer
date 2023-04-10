@@ -65,7 +65,11 @@ export default {
   },
   methods:{
     handleJumpToViewProducts(id){
-      this.$router.push({path: '/viewProducts', query: { id: id }})
+      axios.get('http://localhost:8080/api/cp/productsByCategory?id=' + id)
+          .then(response => {
+            this.$store.commit('SET_PRODUCTS', response.data)
+            this.$router.push({path: '/viewProducts'})
+          })
     }
   },
   created() {
