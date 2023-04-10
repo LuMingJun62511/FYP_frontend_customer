@@ -3,15 +3,20 @@
     <div class="product-grid">
       <product-card v-for="(product, index) in paginatedProducts" :key="index" :product="product" />
     </div>
-    <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage"
-        :page-sizes="pageSizes"
-        :page-size="pageSize"
-        layout="sizes, prev, pager, next"
-        :total="products.length"
-    />
+    <div class="pagination-container">
+      <div class="pagination-wrapper">
+        <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page.sync="currentPage"
+            :page-sizes="pageSizes"
+            :page-size="pageSize"
+            layout="sizes, prev, pager, next"
+            :total="products.length"
+            class="pagination"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -64,5 +69,25 @@ export default {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

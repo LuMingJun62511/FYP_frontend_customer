@@ -13,6 +13,10 @@ export default {
     computedProducts() {
       return this.$store.state.products;
     }
+  },
+  created() {
+    console.log(this.$store.state.hotSaleProducts)
+    console.log(this.$store.state.newProducts)
   }
 }
 </script>

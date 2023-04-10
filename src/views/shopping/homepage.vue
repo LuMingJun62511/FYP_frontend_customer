@@ -5,15 +5,15 @@
       <el-row>
         <el-col>所有商品种类</el-col>
         <el-col v-for="category in categories">
-          <el-button @click="handleJumpToViewProducts(category.categoryID)" >
+          <p @click="handleJumpToViewProducts(category.categoryID)" >
             {{category.label}}
-          </el-button>
+          </p>
         </el-col>
       </el-row>
 
     </el-col>
     <el-col :span="14">
-      <el-carousel height="150px">
+      <el-carousel height="300px">
         <el-carousel-item :key="1">
           广告1
         </el-carousel-item>
@@ -39,19 +39,35 @@
   </el-row>
 
   <el-row class="display2">
-    <el-col :span="12">
-      <p>特价区</p>
+    <el-col :span="11">
+      <p>热销区</p>
+      <div class="scroll-container">
+        <el-scrollbar style="width: 100%; white-space: nowrap;">
+          <div>
+            <product-card v-for="product in hot_sale_products" :product="product" style="display: inline-block; margin-right: 10px;"></product-card>
+          </div>
+        </el-scrollbar>
+      </div>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="11" :offset="2">
       <p>新品区</p>
+      <div class="scroll-container">
+        <el-scrollbar style="width: 100%; white-space: nowrap;">
+          <div>
+            <product-card v-for="product in new_products" :product="product" style="display: inline-block; margin-right: 10px;"></product-card>
+          </div>
+        </el-scrollbar>
+      </div>
     </el-col>
   </el-row>
+
 </template>
 
 <script>
+import axios from "axios";
 import ShoppingHeader from "@/views/shopping/components/searchBar.vue";
 import SearchBar from "@/views/shopping/components/searchBar.vue";
-import axios from "axios";
+import ProductCard from "@/views/shopping/components/productCard.vue";
 
 export default {
   name: "homepage",
@@ -67,7 +83,12 @@ export default {
     handleJumpToViewProducts(id){
       axios.get('http://localhost:8080/api/cp/productsByCategory?id=' + id)
           .then(response => {
-            this.$store.commit('SET_PRODUCTS', response.data)
+            let res = []
+            response.data.forEach(product =>{
+              product.amount = 1
+              res.push(product)
+            })
+            this.$store.commit('SET_PRODUCTS', res)
             this.$router.push({path: '/viewProducts'})
           })
     }
@@ -82,8 +103,35 @@ export default {
         })
       })
     })
+
+    axios.get('http://localhost:8080/api/cp/findHotSale').then(response => {
+      let res = []
+      response.data.forEach(product =>{
+        product.amount = 1
+        res.push(product)
+      })
+      this.$store.commit('SET_HOT_SALE_PRODUCTS', res)
+    })
+
+    axios.get('http://localhost:8080/api/cp/findNew').then(response => {
+      let res = []
+      response.data.forEach(product =>{
+        product.amount = 1
+        res.push(product)
+      })
+      this.$store.commit('SET_NEW_PRODUCTS', res)
+    })
+
   },
-  components: {SearchBar, ShoppingHeader}
+  computed: {
+    new_products() {
+      return this.$store.state.newProducts;
+    },
+    hot_sale_products() {
+      return this.$store.state.hotSaleProducts;
+    }
+  },
+  components: {ProductCard, SearchBar, ShoppingHeader}
 }
 </script>
 
@@ -93,9 +141,13 @@ search-bar{
 }
 .display1{
   height: 40%;
+  background-color: #f2f2f2;
 }
 
-.display2{
+.display2 {
   height: 40%;
+  background-color: #f2f2f2;
+  margin-top: 10px;
 }
+
 </style>

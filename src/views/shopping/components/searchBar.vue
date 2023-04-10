@@ -1,19 +1,19 @@
 <template>
-  <el-row>
-    <el-col :span="4" class="big-icon">
+  <div class="search-bar-container">
+    <div class="icon-container">
       <p>标志</p>
-    </el-col>
-    <el-col :span="14" class="search" >
+    </div>
+    <div class="search-container">
       <div style="display: flex; align-items: center; justify-content: center;">
-        <el-input v-model="searchItem" placeholder="search for something"></el-input>
+        <el-input v-model="searchItem" placeholder="search for something" style="width: 100%"></el-input>
         <el-button @click="search"> search </el-button>
       </div>
-    </el-col>
-    <el-col :span="6" class="cart">
+    </div>
+    <div class="cart-container">
       <cart></cart>
-    </el-col>
+    </div>
+  </div>
 
-  </el-row>
 </template>
 
 <script>
@@ -33,7 +33,12 @@ export default {
     search() {
       axios.get('http://localhost:8080/api/cp/productsNameLike?name=' + this.searchItem)
           .then(response => {
-            this.$store.commit('SET_PRODUCTS', response.data)
+            let res = []
+            response.data.forEach(product =>{
+              product.amount = 1
+              res.push(product)
+            })
+            this.$store.commit('SET_PRODUCTS', res)
             this.$router.push({path: '/viewProducts'})
           })
     }
@@ -43,5 +48,25 @@ export default {
 </script>
 
 <style scoped>
+.search-bar-container{
+  background-color: #f2f2f2;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 
+.icon-container {
+  flex: 20% 0 0;
+}
+
+.search-container {
+  flex: 0 60% 0;
+}
+
+.cart-container {
+  flex: 0 0 20%;
+}
 </style>

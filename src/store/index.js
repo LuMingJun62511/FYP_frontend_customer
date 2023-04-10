@@ -6,24 +6,30 @@ export default createStore({
     username: null,
     userId: null,
     cart:[
-      {
-        id:101,
-        name:'test1',
-        price:1,
-        amount:1
-      },
+      // {
+      //   id:101,
+      //   name:'test1',
+      //   price:1,
+      //   amount:1
+      // },
     ],
     products:[
-      {
-        id:101,
-        name:'test1',
-        price:1,
-        image:'test1',
-        category:'test1',
-        created_time:'test1',
-        is_low:'test1',
-        amount:1,
-      }
+      // {
+      //   id:101,
+      //   name:'test1',
+      //   price:1,
+      //   image:'test1',
+      //   category:'test1',
+      //   created_time:'test1',
+      //   is_low:'test1',
+      //   amount:1,
+      // }
+    ],
+    hotSaleProducts:[
+
+    ],
+    newProducts:[
+
     ]
   },
   getters: {
@@ -38,13 +44,21 @@ export default createStore({
     SET_PRODUCTS(state, products) {
       state.products = products
     },
-    Cart_add: (state,commo) => {
-      state.cart.push(commo)
+    SET_HOT_SALE_PRODUCTS(state, hotSaleProducts) {
+      state.hotSaleProducts = hotSaleProducts
     },
-    Cart_modify: (state,id,amount) =>{
-      const index = state.cart.findIndex(c => c.id === id)
+    SET_NEW_PRODUCTS(state, newProducts) {
+        state.newProducts = newProducts
+    },
+    Cart_add: (state,commo) => {
+      const newCommo = { ...commo };
+      state.cart.push(newCommo);
+      // state.cart.push(commo)
+    },
+    Cart_modify: (state,commo) =>{
+      const index = state.cart.findIndex(c => c.id === commo.id)
       if (index !== -1) {
-        state.cart[index].amount = amount
+        state.cart[index].amount = state.cart[index].amount + commo.amount
       }
     },
     Cart_delete: (state,id) =>{

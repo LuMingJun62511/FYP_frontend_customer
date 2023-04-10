@@ -1,5 +1,5 @@
 <template class="rootApp">
-  <my-header></my-header>
+  <my-header class="header"></my-header>
   <router-view/>
 </template>
 <script setup>
@@ -8,8 +8,12 @@ import MyHeader from "@/views/layout/header.vue";
 
 <style>
 .rootApp{
-  background-color: gray;
-
+  padding: 0;
+  margin: 0;
 }
+.header {
+  margin-bottom: 10px;
+}
+
 </style>
 
