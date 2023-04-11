@@ -35,6 +35,9 @@ export default createStore({
   getters: {
   },
   mutations: {
+    SET_USER_ID: (state, id) => {
+        state.userId = id
+    },
     SET_NAME: (state, name) => {
       state.username = name
     },
@@ -61,8 +64,8 @@ export default createStore({
         state.cart[index].amount = state.cart[index].amount + commo.amount
       }
     },
-    Cart_delete: (state,id) =>{
-      const index = state.cart.findIndex(c => c.id === id)
+    Cart_delete: (state,commo) =>{
+      const index = state.cart.findIndex(c => c.id === commo.id)
       if (index !== -1) {
         state.cart.splice(index, 1)
       }

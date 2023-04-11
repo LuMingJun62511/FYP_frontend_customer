@@ -5,9 +5,9 @@
       <p class="name">name: {{product.name}}</p>
       <p class="price">price: {{product.price}} euros</p>
       <el-input-number v-model="product.amount" :min="1"></el-input-number>
-      <el-button type="text" @click="handlePutInCart()">加入购物车</el-button>
+      <el-button @click="handlePutInCart()">加入购物车</el-button>
     </div>
-    <el-button type="text" @click="handleJump(product.id)">查看详情</el-button>
+    <el-button @click="handleJump(product.id)">查看详情</el-button>
   </el-card>
 </template>
 
@@ -28,7 +28,6 @@ export default {
     handleJump(id){
       this.$router.push({path:'/product/'+id})
     }
-  //   这里为什么一下子把购物车里多少货与卡片上显示的绑定了
   }
 }
 </script>

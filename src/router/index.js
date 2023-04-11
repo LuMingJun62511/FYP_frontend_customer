@@ -16,18 +16,6 @@ const routes = [
     name: 'viewProductsByNameLike',
     component: () => import('@/views/shopping/viewProducts.vue'),
   },
-  // {
-  //   path: '/viewProducts',
-  //   name: 'viewProductsByNameLike',
-  //   props: route => ({ name: route.query.name }),
-  //   component: () => import('@/views/shopping/viewProducts.vue'),
-  // },
-  // {
-  //   path: '/viewProducts',
-  //   name: 'viewProductsById',
-  //   props: route => ({ id: route.query.id }),
-  //   component: () => import('@/views/shopping/viewProducts.vue'),
-  // },
   {
     path: '/product/:id',
     name: 'product',
@@ -37,6 +25,16 @@ const routes = [
     path: '/checkout',
     name: 'checkout',
     component: () => import('@/views/checkout/index.vue'),
+  },
+  {
+    path: '/memberCenter',
+    name: 'memberCenter',
+    component: () => import('@/views/user/memberCenter.vue'),
+  },
+  {
+    path: '/addressManage',
+    name: 'addressManage',
+    component: () => import('@/views/user/addressManage.vue'),
   },
 ]
 

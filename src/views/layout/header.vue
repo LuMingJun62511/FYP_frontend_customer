@@ -20,7 +20,7 @@
         </router-link>
       </el-col>
       <el-col :span="3">
-        <router-link to="/home" style="text-decoration: none">
+        <router-link to="/memberCenter" style="text-decoration: none">
           member center
         </router-link>
       </el-col>
@@ -46,7 +46,7 @@
         </router-link>
       </el-col>
       <el-col :span="3">
-        <router-link to="/home" style="text-decoration: none">
+        <router-link to="/memberCenter" style="text-decoration: none">
           member center
         </router-link>
       </el-col>
@@ -71,6 +71,7 @@ export default {
 
   created() {
     this.$store.commit('SET_LOGIN',true);
+    this.$store.commit('SET_USER_ID',1);
   }
 
 }

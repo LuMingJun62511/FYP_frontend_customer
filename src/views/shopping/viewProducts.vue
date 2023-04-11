@@ -14,10 +14,10 @@ export default {
       return this.$store.state.products;
     }
   },
-  created() {
-    console.log(this.$store.state.hotSaleProducts)
-    console.log(this.$store.state.newProducts)
-  }
+  // created() {
+  //   console.log(this.$store.state.hotSaleProducts)
+  //   console.log(this.$store.state.newProducts)
+  // }
 }
 </script>
 <style scoped>
