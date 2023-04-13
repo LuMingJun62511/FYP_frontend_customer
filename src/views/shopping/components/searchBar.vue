@@ -5,8 +5,8 @@
     </div>
     <div class="search-container">
       <div style="display: flex; align-items: center; justify-content: center;">
-        <el-input v-model="searchItem" placeholder="search for something" style="width: 100%"></el-input>
-        <el-button @click="search"> search </el-button>
+        <el-input v-model="searchItem" placeholder="search for something" style="min-width: 450px"></el-input>
+        <el-button @click="search" style="margin-left: 15px"> search </el-button>
       </div>
     </div>
     <div class="cart-container">

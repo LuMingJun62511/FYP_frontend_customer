@@ -2,14 +2,15 @@
   <el-card shadow="always" class="ad-card">
     <el-form :model="address" v-if="!changing">
       <el-form-item >
-        <p>收货人: {{address.name}}        联系电话 :{{address.phoneNumber}}  </p>
+        <p>收货人: {{address.name}} 联系电话 :{{address.phoneNumber}}  </p>
       </el-form-item>
       <el-form-item >
         <p>line1: {{address.line1}} line2 :{{address.line2}} city: {{address.line1}}  </p>
       </el-form-item>
-      <el-form-item>
+      <div style="display: flex; justify-content: center;">
         <el-button type="primary" @click="changeInfo">modify this</el-button>
-      </el-form-item>
+        <el-button type="primary" @click="useInfo">use this</el-button>
+      </div>
     </el-form>
 
 
@@ -29,9 +30,9 @@
       <el-form-item label="city">
         <el-input v-model="address.city">{{address.city}}</el-input>
       </el-form-item>
-      <el-form-item>
+      <div style="display: flex; justify-content: center;">
         <el-button type="primary" @click="saveInfo">save this</el-button>
-      </el-form-item>
+      </div>
     </el-form>
   </el-card>
 </template>
@@ -68,6 +69,10 @@ export default {
   methods:{
     changeInfo(){
       this.changing = true;
+    },
+    useInfo(){
+      console.log("待会把这套信息直接存到新订单里")
+      // this.$emit('useInfo',this.address);
     },
     saveInfo(){
       this.changing = false;

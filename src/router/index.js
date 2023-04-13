@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/checkout',
     name: 'checkout',
-    component: () => import('@/views/checkout/index.vue'),
+    component: () => import('@/views/checkout/checkoutPage.vue'),
   },
   {
     path: '/memberCenter',
@@ -34,7 +34,17 @@ const routes = [
   {
     path: '/addressManage',
     name: 'addressManage',
-    component: () => import('@/views/user/addressManage.vue'),
+    component: () => import('@/views/checkout/components/addressBoard'),
+  },
+  {
+    path: '/myOrders',
+    name: 'myOrders',
+    component: () => import('@/views/orders/myOrders.vue'),
+  },
+  {
+    path: '/receipt/:id',
+    name: 'receipt',
+    component: () => import('@/views/orders/oneReceipt.vue'),
   },
 ]
 

@@ -1,19 +1,20 @@
 <template>
   <search-bar></search-bar>
   <el-row class="display1">
-    <el-col :span="5">
+    <el-col :span="4" style="background-color: #f2f2f2">
       <el-row>
         <el-col>所有商品种类</el-col>
         <el-col v-for="category in categories">
+          <el-divider />
           <p @click="handleJumpToViewProducts(category.categoryID)" >
             {{category.label}}
           </p>
         </el-col>
       </el-row>
-
     </el-col>
-    <el-col :span="14">
-      <el-carousel height="300px">
+
+    <el-col :span="13" :offset="1" style="background-color: #f2f2f2" >
+      <el-carousel height="350px">
         <el-carousel-item :key="1">
           广告1
         </el-carousel-item>
@@ -29,7 +30,7 @@
       </el-carousel>
     </el-col>
 
-    <el-col :span="5">
+    <el-col :span="5" :offset="1" style="background-color: #f2f2f2">
       <el-row>
         <el-col>整顿公告</el-col>
         <el-col>退货公告</el-col>
@@ -141,7 +142,7 @@ search-bar{
 }
 .display1{
   height: 40%;
-  background-color: #f2f2f2;
+  /*background-color: #f2f2f2;*/
 }
 
 .display2 {

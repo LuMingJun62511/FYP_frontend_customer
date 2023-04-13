@@ -5,9 +5,11 @@
       <p class="name">name: {{product.name}}</p>
       <p class="price">price: {{product.price}} euros</p>
       <el-input-number v-model="product.amount" :min="1"></el-input-number>
-      <el-button @click="handlePutInCart()">加入购物车</el-button>
+      <el-button @click="handlePutInCart()" style="margin-left: 5px">加入购物车</el-button>
     </div>
-    <el-button @click="handleJump(product.id)">查看详情</el-button>
+    <div style="display: flex; justify-content: center; margin-top: 5px">
+      <el-button @click="handleJump(product.id)">查看详情</el-button>
+    </div>
   </el-card>
 </template>
 

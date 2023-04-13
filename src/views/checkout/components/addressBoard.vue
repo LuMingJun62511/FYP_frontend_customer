@@ -1,49 +1,46 @@
 <template>
-  <el-row>
-    <el-col :span="8">
-      <div class="scroll-container">
-        <el-scrollbar height="800px">
-          <div>
-            <address-card v-for="address in addresses" :address="address" :key="address.id"></address-card>
-          </div>
-        </el-scrollbar>
+  <div class="scroll-container" style="overflow-x: auto;">
+    <div style="display: flex;">
+      <el-scrollbar style="flex: 1;">
+        <div style="display: flex;">
+          <address-card v-for="address in addresses" :address="address" :key="address.id"></address-card>
+        </div>
+      </el-scrollbar>
+    </div>
+  </div>
+  <div style="width: 75%;margin: auto">
+    <p>创建新地址</p>
+    <el-form>
+      <el-form-item label="收货人姓名">
+        <el-input v-model="newAddress.name"></el-input>
+      </el-form-item>
+      <el-form-item label="收货人电话">
+        <el-input v-model="newAddress.phoneNumber"></el-input>
+      </el-form-item>
+      <el-form-item label="line1">
+        <el-input v-model="newAddress.line1"></el-input>
+      </el-form-item>
+      <el-form-item label="line2">
+        <el-input v-model="newAddress.line2"></el-input>
+      </el-form-item>
+      <el-form-item label="city">
+        <el-input v-model="newAddress.city"></el-input>
+      </el-form-item>
+      <div style="display: flex; justify-content: center;">
+        <el-button type="primary" @click="saveInfo">Save this address</el-button>
       </div>
-    </el-col>
-    <el-col :span="16">
-      <div>
-        <p>创建新地址或修改现存地址</p>
-        <el-form>
-          <el-form-item label="收货人姓名">
-            <el-input v-model="newAddress.name"></el-input>
-          </el-form-item>
-          <el-form-item label="收货人电话">
-            <el-input v-model="newAddress.phoneNumber"></el-input>
-          </el-form-item>
-          <el-form-item label="line1">
-            <el-input v-model="newAddress.line1"></el-input>
-          </el-form-item>
-          <el-form-item label="line2">
-            <el-input v-model="newAddress.line2"></el-input>
-          </el-form-item>
-          <el-form-item label="city">
-            <el-input v-model="newAddress.city"></el-input>
-          </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="saveInfo">提交</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
-    </el-col>
-  </el-row>
+    </el-form>
+  </div>
+
 
 </template>
 
 <script>
 import axios from "axios";
-import AddressCard from "@/views/user/components/addressCard.vue";
+import AddressCard from "@/views/checkout/components/addressCard.vue";
 
 export default {
-  name: "addressManage",
+  name: "addressBoard",
   components: {AddressCard},
   data() {
     return {
@@ -65,7 +62,6 @@ export default {
   methods: {
     async saveInfo() {
       this.newAddress.id = this.generateId();
-      console.log("id没有问题" + this.newAddress.id)
       await axios.post('http://localhost:8080/api/cp/updateAddress', this.newAddress)
           .then(response => {
           })
@@ -112,8 +108,9 @@ export default {
 
 <style scoped>
 .scroll-container {
-  width: 350px;
+  width: 100%;
   background-color: #f2f2f2;
-  /*overflow: auto;*/
+  display: flex;
+  overflow-x: auto;
 }
 </style>
