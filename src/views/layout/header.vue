@@ -25,7 +25,7 @@
         </router-link>
       </el-col>
       <el-col :span="3">
-        <router-link to="/home" style="text-decoration: none">
+        <router-link to="/myOrders" style="text-decoration: none">
           orders
         </router-link>
       </el-col>
@@ -51,7 +51,7 @@
         </router-link>
       </el-col>
       <el-col :span="3">
-        <router-link to="/home" style="text-decoration: none">
+        <router-link to="/myOrders" style="text-decoration: none">
           orders
         </router-link>
       </el-col>

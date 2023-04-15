@@ -16,7 +16,6 @@
       </el-col>
     </el-row>
 
-
     <div>
       <div v-if="steps === 0">
         <el-card style="width: 650px; background-color: #f2f2f2; margin-left: auto;margin-right:auto ;margin-top: 10px" >
@@ -91,6 +90,7 @@
 
 <script>
 import addressBoard from "@/views/checkout/components/addressBoard.vue";
+
 
 export default {
   name: "index",

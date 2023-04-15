@@ -1,8 +1,8 @@
 <template>
-  <div style="width: 1050px; margin: auto">
+  <div style="width: 1100px; background-color: #f2f2f2;margin: auto">
     <el-table
         :data="addresses"
-        style="width: 100%">
+        style="width: 1050px;margin-left: auto;margin-right: auto;margin-top: 20px">
       <el-table-column
           label="receiver name"
           prop="name"
@@ -52,28 +52,34 @@
     </el-table>
   </div>
 
-  <div style="width: 75%;margin: auto">
-    <p>创建新地址</p>
-    <el-form>
-      <el-form-item label="收货人姓名">
-        <el-input v-model="newAddress.name"></el-input>
-      </el-form-item>
-      <el-form-item label="收货人电话">
-        <el-input v-model="newAddress.phoneNumber"></el-input>
-      </el-form-item>
-      <el-form-item label="line1">
-        <el-input v-model="newAddress.line1"></el-input>
-      </el-form-item>
-      <el-form-item label="line2">
-        <el-input v-model="newAddress.line2"></el-input>
-      </el-form-item>
-      <el-form-item label="city">
-        <el-input v-model="newAddress.city"></el-input>
-      </el-form-item>
-      <div style="display: flex; justify-content: center;">
-        <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
-      </div>
-    </el-form>
+  <div style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
+    <el-row>
+      <el-col :span="4">
+        <p>创建新地址</p>
+      </el-col>
+      <el-col :span="20">
+        <el-form>
+          <el-form-item label="收货人姓名">
+            <el-input v-model="newAddress.name" style="width: 75%"></el-input>
+          </el-form-item>
+          <el-form-item label="收货人电话">
+            <el-input v-model="newAddress.phoneNumber" style="width: 75%"></el-input>
+          </el-form-item>
+          <el-form-item label="line1">
+            <el-input v-model="newAddress.line1" style="width: 75%"></el-input>
+          </el-form-item>
+          <el-form-item label="line2">
+            <el-input v-model="newAddress.line2" style="width: 75%"></el-input>
+          </el-form-item>
+          <el-form-item label="city">
+            <el-input v-model="newAddress.city" style="width: 75%"></el-input>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
+    <div style="display: flex; justify-content: center;">
+      <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
+    </div>
   </div>
 </template>
 
