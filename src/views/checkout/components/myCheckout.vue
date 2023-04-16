@@ -1,8 +1,17 @@
 <template>
-  <div>
-    <label htmlFor="card-element">Credit or debit card</label>
-    <div id="card-element" ref="cardElement"></div>
-    <el-button @click="submitPayment" style="margin: auto">Submit Payment</el-button>
+  <div style="background-color: #f2f2f2;width: 550px">
+    <p style="text-align: center">Pay with credit or debit card</p>
+    <p style="text-align: center">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      Card number
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      |&nbsp;&nbsp;Exp Date:MM/YY&nbsp;&nbsp;
+      |&nbsp; CVC &nbsp;
+      |&nbsp;Postal code
+    </p>
+
+    <div id="card-element" ref="cardElement" style="width: 420px; margin: auto;margin-bottom: 20px"></div>
+    <el-button @click="submitPayment" style="margin: 0 auto; display: block;">Submit Payment</el-button>
   </div>
 </template>
 
@@ -14,7 +23,7 @@ export default {
   name: 'myCheckout',
 
   setup() {
-    const stripePromise = loadStripe(process.env.STRIPE_pk);
+    const stripePromise = loadStripe(process.env.VUE_APP_STRIPE_pk);
     // const stripePromise = loadStripe('pk_test_51MtuTJIcbspUJZVnbSwOQDuevEt8HJF5PQQcGCze0qPE2Bqtg40x39Tu9FfbPDbQogztopKfrKSB75dnG6KxfjfS00EdffJfHW');
     const cardElement = ref(null);
     const clientSecret = ref('');

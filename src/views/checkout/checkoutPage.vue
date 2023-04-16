@@ -74,6 +74,8 @@
         </el-card>
       </div>
       <div v-if="steps === 2">
+        <p>请选择付款方式</p>
+        <p></p>
         <el-card style="width: 650px; background-color: #f2f2f2; margin-left: auto;margin-right:auto ;margin-top: 10px" >
           <p>Please confirm your order</p>
           <p>这就是用stripe的地方了</p>
