@@ -73,9 +73,9 @@ export default {
       this.changing = true;
     },
     useAddress(){
-      console.log(this.address);
+      // console.log(this.address);
       this.$store.commit('SET_ADDRESS', this.address)
-      console.log(this.$store.state.address);
+      // console.log(this.$store.state.address);
     },
     saveAddress(){
       this.changing = false;

@@ -16,6 +16,9 @@
   <p class="name">name: {{product.name}}</p>
   <p class="price">price: {{product.price}} euros</p>
   <el-input-number v-model="product.amount" :min="1"></el-input-number>
+        <div v-if="product.isLow===1" style="text-align: center; background-color: #da607a">
+          <p>提示，当前商品处于缺货状态，如果您一定要购买，可能收到商家为您选择的替代品</p>
+        </div>
   <el-button type="text" @click="handlePutInCart()">加入购物车</el-button>
 </template>
 
@@ -34,7 +37,7 @@ export default {
         image:'test1',
         category:'test1',
         created_time:'test1',
-        is_low:'test1',
+        isLow:'test1',
         amount:1,
       }
     };

@@ -4,6 +4,9 @@
       <!--    <img src="~examples/assets/images/hamburger.png" class="image">-->
       <p class="name">name: {{product.name}}</p>
       <p class="price">price: {{product.price}} euros</p>
+      <div v-if="product.isLow===1" style="text-align: center; background-color: #da607a">
+        <p>out of stock</p>
+      </div>
       <el-input-number v-model="product.amount" :min="1"></el-input-number>
       <el-button @click="handlePutInCart()" style="margin-left: 5px">加入购物车</el-button>
     </div>

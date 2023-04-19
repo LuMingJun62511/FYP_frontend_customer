@@ -57,7 +57,7 @@ export default {
 
       if (result.error) {
         // Show error message to user
-        console.log(result.error.message);
+        // console.log(result.error.message);
       } else {
         // Payment successful
         console.log('Payment succeeded!');

@@ -91,11 +91,11 @@ export default {
   created() {
     axios.get('http://localhost:8080/api/cp/userProfile/'+this.$store.state.userId).then(response => {
       this.userInfo = response.data;
-      console.log(this.userInfo);
+      // console.log(this.userInfo);
     })
     axios.get('http://localhost:8080/api/cp/userStatistics/'+this.$store.state.userId).then(response => {
       this.userStatistics = response.data;
-      console.log(this.userStatistics)
+      // console.log(this.userStatistics)
     })
 
   },

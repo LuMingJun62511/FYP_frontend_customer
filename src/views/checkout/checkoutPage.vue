@@ -223,8 +223,6 @@ export default {
       }).catch(error => {
         console.log(error);
       });
-      await console.log("看看订单");
-      await console.log(this.order);
 
       await axios.post('http://localhost:8080/api/cp/saveOrder', this.order).then(response => {
         console.log(response);

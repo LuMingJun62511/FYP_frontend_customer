@@ -91,8 +91,8 @@ export default {
       axios.get('http://localhost:8080/api/cp/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
-            console.log(response);
-            console.log(this.addresses)
+            // console.log(response);
+            // console.log(this.addresses)
           })
           .catch(error => {
             console.log(error);
