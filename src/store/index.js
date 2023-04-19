@@ -5,6 +5,14 @@ export default createStore({
     isLogin: false,
     username: null,
     userId: null,
+    address: {
+      id: 0,
+      name: '',
+      phone: '',
+      line1: '',
+      line2: '',
+      city: '',
+    },
     cart:[
       // {
       //   id:101,
@@ -43,6 +51,9 @@ export default createStore({
     },
     SET_LOGIN: (state, login) => {
       state.isLogin = login
+    },
+    SET_ADDRESS: (state, address) => {
+      state.address = address
     },
     SET_PRODUCTS(state, products) {
       state.products = products

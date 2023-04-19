@@ -4,32 +4,32 @@
       <el-scrollbar style="flex: 1;">
         <div style="display: flex;">
           <address-card v-for="address in addresses" :address="address" :key="address.id"></address-card>
+          <div style="width: 300px;height: 330px">
+            <p>创建新地址</p>
+            <el-form>
+              <el-form-item label="收货人姓名">
+                <el-input v-model="newAddress.name"></el-input>
+              </el-form-item>
+              <el-form-item label="收货人电话">
+                <el-input v-model="newAddress.phoneNumber"></el-input>
+              </el-form-item>
+              <el-form-item label="line1">
+                <el-input v-model="newAddress.line1"></el-input>
+              </el-form-item>
+              <el-form-item label="line2">
+                <el-input v-model="newAddress.line2"></el-input>
+              </el-form-item>
+              <el-form-item label="city">
+                <el-input v-model="newAddress.city"></el-input>
+              </el-form-item>
+              <div style="display: flex; justify-content: center;">
+                <el-button type="primary" @click="saveInfo">Save this address</el-button>
+              </div>
+            </el-form>
+          </div>
         </div>
       </el-scrollbar>
     </div>
-  </div>
-  <div style="width: 75%;margin: auto">
-    <p>创建新地址</p>
-    <el-form>
-      <el-form-item label="收货人姓名">
-        <el-input v-model="newAddress.name"></el-input>
-      </el-form-item>
-      <el-form-item label="收货人电话">
-        <el-input v-model="newAddress.phoneNumber"></el-input>
-      </el-form-item>
-      <el-form-item label="line1">
-        <el-input v-model="newAddress.line1"></el-input>
-      </el-form-item>
-      <el-form-item label="line2">
-        <el-input v-model="newAddress.line2"></el-input>
-      </el-form-item>
-      <el-form-item label="city">
-        <el-input v-model="newAddress.city"></el-input>
-      </el-form-item>
-      <div style="display: flex; justify-content: center;">
-        <el-button type="primary" @click="saveInfo">Save this address</el-button>
-      </div>
-    </el-form>
   </div>
 
 

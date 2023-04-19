@@ -44,7 +44,7 @@
           prop="id"
           width="150">
         <template v-slot="scope">
-          <el-button @click="deleteAddress(scope.row.id)">
+          <el-button type="danger" @click="deleteAddress(scope.row.id)">
             delete this
           </el-button>
         </template>

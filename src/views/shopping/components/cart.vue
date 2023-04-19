@@ -12,7 +12,10 @@
           <el-button size="small" @click="$store.commit('Cart_delete',item)">删除</el-button>
         </el-dropdown-item>
       </el-dropdown-menu>
-      <div style="display: flex; justify-content: center;">
+      <div v-if="calculateAmount===0">
+        <p style="text-align: center">购物车里还没有物品，快去购物吧</p>
+      </div>
+      <div v-if="calculateAmount!==0" style="display: flex; justify-content: center;">
         <p style="margin-right: 16px;">共{{calculateAmount}}商品，总计{{calculatePrice}}euros</p>
         <el-button type="primary" @click="handleJumpCheckout">结算</el-button>
       </div>
