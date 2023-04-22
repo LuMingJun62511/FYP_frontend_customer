@@ -1,9 +1,17 @@
 <template>
-  <el-card>
+  <el-card class="card-wrapper">
     <div>
-      <!--    <img src="~examples/assets/images/hamburger.png" class="image">-->
-      <p class="name">name: {{product.name}}</p>
-      <p class="price">price: {{product.price}} euros</p>
+      <el-row>
+        <el-col :span="12">
+          <img :src="require('@/assets/images/' + product.pic + '.jpg')" class="image" alt="@/assets/images/image-not-found-icon.png" style="width: 90px; height: 90px;">
+        </el-col>
+        <el-col :span="12">
+          <div>
+            <p class="name" style="display: block;">name: {{product.name}}</p>
+            <p class="price" style="display: block;">price: {{product.price}} euros</p>
+          </div>
+        </el-col>
+      </el-row>
       <div v-if="product.isLow===1" style="text-align: center; background-color: #da607a">
         <p>out of stock</p>
       </div>
@@ -38,7 +46,7 @@ export default {
 </script>
 
 <style scoped>
-/*.el-card{*/
-/*  max-width:100px;*/
-/*}*/
+.card-wrapper{
+  height: 257px;
+}
 </style>

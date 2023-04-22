@@ -1,5 +1,5 @@
 <template>
-  <div class="addresses-container" style="width: 1100px; background-color: #f2f2f2;margin: auto">
+  <div class="addresses-container" style="width: 1100px; background-color: #f2f2f2;margin: 20px auto;">
     <el-table
         :data="addresses"
         style="width: 1050px;margin-left: auto;margin-right: auto;margin-top: 20px">
@@ -53,11 +53,12 @@
   </div>
 
   <div class="create-new-address" style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
-    <el-row>
-      <el-col :span="4">
-        <p>create new address</p>
-      </el-col>
-      <el-col :span="20">
+    <h3 style="text-align: center">create new address</h3>
+<!--    <el-row>-->
+<!--      <el-col :span="4">-->
+<!--        <p>create new address</p>-->
+<!--      </el-col>-->
+<!--      <el-col :span="20">-->
         <el-form>
           <el-form-item label="receiver name">
             <el-input v-model="newAddress.name" style="width: 75%"></el-input>
@@ -75,8 +76,8 @@
             <el-input v-model="newAddress.city" style="width: 75%"></el-input>
           </el-form-item>
         </el-form>
-      </el-col>
-    </el-row>
+<!--      </el-col>-->
+<!--    </el-row>-->
     <div class="save-button" style="display: flex; justify-content: center;">
       <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
     </div>

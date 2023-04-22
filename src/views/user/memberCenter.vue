@@ -1,54 +1,53 @@
 <template>
-  <el-row>
-    <el-col :span="15" :offset="1">
-      <div class="profile-container" style="background-color: #f2f2f2; height:300px" >
-        <p style="text-align: center">profile</p>
-        <el-form :model="userInfo" label-width="120px">
-          <el-form-item label="user name">
-            <el-input v-model="userInfo.username" style="width: 60%"/>
-          </el-form-item>
+  <h1 style="text-align: center;">Member Center</h1>
+  <div class="user-info-container" style="margin: auto">
+    <div class="profile-container" style="display: inline-block;background-color: #f2f2f2; height:330px;width: 680px;margin-right: 20px" >
+      <h2 style="text-align: center">profile</h2>
+      <el-form :model="userInfo" label-width="120px">
+        <el-form-item label="user name">
+          <el-input v-model="userInfo.username" style="width: 60%"/>
+        </el-form-item>
 
-          <el-form-item label="gender">
-            <el-radio-group v-model="userInfo.gender">
-              <el-radio :label="1" :checked="userInfo.gender === 1">male</el-radio>
-              <el-radio :label="2" :checked="userInfo.gender === 2">female</el-radio>
-            </el-radio-group>
-          </el-form-item>
+        <el-form-item label="gender">
+          <el-radio-group v-model="userInfo.gender">
+            <el-radio :label="1" :checked="userInfo.gender === 1">male</el-radio>
+            <el-radio :label="2" :checked="userInfo.gender === 2">female</el-radio>
+          </el-radio-group>
+        </el-form-item>
 
-          <el-form-item label="phone number">
-            <el-input v-model="userInfo.phone" style="width: 60%"/>
-          </el-form-item>
+        <el-form-item label="phone number">
+          <el-input v-model="userInfo.phone" style="width: 60%"/>
+        </el-form-item>
 
-          <el-form-item label="personalized signature">
-            <el-input v-model="userInfo.personalizedSignature" type="textarea" style="width: 90%"/>
-          </el-form-item>
+        <el-form-item label="personalized signature">
+          <el-input v-model="userInfo.personalizedSignature" type="textarea" style="width: 90%"/>
+        </el-form-item>
 
-          <el-form-item>
-            <el-button type="primary" @click="modifyProfile">Modify</el-button>
-            <el-button>Cancel</el-button>
-          </el-form-item>
-        </el-form>
-      </div>
+        <el-form-item>
+          <el-button type="primary" @click="modifyProfile">Modify</el-button>
+          <el-button>Cancel</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="statistic-container" style="display: inline-block;background-color: #f2f2f2; height:330px;width: 400px;">
+      <h2 style="text-align: center">statistics</h2>
+      <el-form>
+        <el-form-item class="statistic-item">
+          <label class="statistic-label">total consumption: </label>
+          <p class="statistic-value">{{userStatistics.consumeAmount}}</p>
+        </el-form-item>
+        <el-form-item class="statistic-item">
+          <label class="statistic-label">total order count: </label>
+          <p class="statistic-value">{{userStatistics.orderCount}}</p>
+        </el-form-item>
+        <el-form-item class="statistic-item">
+          <label class="statistic-label">total loyalPoints: </label>
+          <p class="statistic-value">{{userInfo.loyalPoints}}</p>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
 
-    </el-col>
-    <el-col :span="6" :offset="1">
-      <div class="statistic-container" style="background-color: #f2f2f2; height:300px">
-        <p style="text-align: center">statistics</p>
-        <el-form>
-          <el-form-item label="total consumption">
-            <p>{{userStatistics.consumeAmount}}</p>
-          </el-form-item>
-          <el-form-item label="Total Orders">
-            <p>{{userStatistics.orderCount}}</p>
-          </el-form-item>
-          <el-form-item label="number of loyal points">
-            <p>{{userInfo.loyalPoints}}</p>
-          </el-form-item>
-        </el-form>
-      </div>
-
-    </el-col>
-  </el-row>
   <div class="addresses-container">
     <address-manage></address-manage>
   </div>
@@ -104,6 +103,10 @@ export default {
 </script>
 
 <style scoped>
-
+.user-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
 

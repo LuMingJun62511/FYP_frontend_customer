@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <span class="el-dropdown-link">
+    <span class="el-dropdown-link" style="font-size: 20px">
       Shopping Cart
     </span>
     <template #dropdown>

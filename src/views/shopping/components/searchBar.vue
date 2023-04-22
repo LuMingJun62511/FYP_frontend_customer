@@ -1,7 +1,8 @@
 <template>
   <div class="search-bar-container">
     <div class="icon-container">
-      <p>Logo</p>
+      <img src="@/assets/icons/logo.png" style="width: 90px;height: 90px;margin-left: 30px">
+<!--      <p>Logo</p>-->
     </div>
     <div class="search-container">
       <div style="display: flex; align-items: center; justify-content: center;">
