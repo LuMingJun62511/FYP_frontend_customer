@@ -73,13 +73,11 @@ export default {
       this.changing = true;
     },
     useAddress(){
-      // console.log(this.address);
       this.$store.commit('SET_ADDRESS', this.address)
-      // console.log(this.$store.state.address);
     },
     saveAddress(){
       this.changing = false;
-      axios.post('http://localhost:8080/api/cp/updateAddress',this.address)
+      axios.post(process.env.VUE_APP_BASE_URL+'/updateAddress',this.address)
         .then(response => {
           console.log(response);
         })

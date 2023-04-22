@@ -43,7 +43,7 @@
                 </el-table-column>
               </el-table>
             </div>
-            <p style="text-align: center;">您总共购买了{{calculateAmount}}件商品，总消费{{calculatePrice}}euros</p>
+            <p style="text-align: center;">You bought a total of {{calculateAmount}} items and spent {{calculatePrice}}euros in total</p>
             <el-row>
               <el-col :span="4" :offset="2">
                 <el-button @click="handleGoBackToShop">continue shopping</el-button>
@@ -60,7 +60,7 @@
         <el-card style="width: 850px; background-color: #f2f2f2; margin-left: auto;margin-right:auto ;margin-top: 10px" >
           <p>Please fill in important information about delivery</p>
 
-          <p>选择送达时间,统一下周一送达，这里就只需要选时间段了</p>
+          <p>Please choose the delivery time, we will deliver it to you next Monday</p>
           <el-select v-model="deliveryTimeChosen">
             <el-option
                 v-for="item in deliveryTime"
@@ -69,7 +69,7 @@
                 :value="item.label">
             </el-option>
           </el-select>
-          <p>选择收货地址</p>
+          <p>Select shipping address</p>
           <address-board></address-board>
           <el-row>
             <el-col :span="4" :offset="2">
@@ -85,9 +85,9 @@
         <el-card style="width: 650px; background-color: #f2f2f2; margin-left: auto;margin-right:auto ;margin-top: 10px" >
           <p>Please confirm your order</p>
           <el-card>
-            <p>您选择的送达时间是{{deliveryTimeChosen}}</p>
-            <p>您选择的收货地址是{{Address}}</p>
-            <p>您的运费总共{{calculateDelivery}}</p>
+            <p>Your chosen delivery time is{{deliveryTimeChosen}}</p>
+            <p>The shipping address you choose is{{Address}}</p>
+            <p>Your shipping total{{calculateDelivery}}</p>
             <div style="width: 600px">
               <el-table
                   :data="$store.state.cart"
@@ -109,7 +109,7 @@
                 </el-table-column>
               </el-table>
             </div>
-            <p style="text-align: center;">您一共需要支付{{calculatePrice+calculateDelivery}}euros</p>
+            <p style="text-align: center;">You need to pay a total of{{calculatePrice+calculateDelivery}}euros</p>
             <el-row>
               <el-col :span="4" :offset="2">
                 <el-button @click="steps = 1">previous step</el-button>
@@ -147,7 +147,6 @@ import addressBoard from "@/views/checkout/components/addressBoard.vue";
 import MyCheckout from "@/views/checkout/components/myCheckout.vue";
 import axios from "axios";
 
-
 export default {
   name: "index",
   components: {MyCheckout, addressBoard},
@@ -173,7 +172,7 @@ export default {
         receiver: {
           id: this.$store.state.address.id,
         },
-        createTime: new Date(),
+        createTime: new Date(2023, 4, 9),
         totalAmount: this.calculatePrice,
         deliveryAmount: 0,
         payAmount: this.calculatePrice,
@@ -218,13 +217,13 @@ export default {
       }
       this.order.note= this.deliveryTimeChosen;
 
-      await axios.get('http://localhost:8080/api/cp/generateOrderID').then(response => {
+      await axios.get(process.env.VUE_APP_BASE_URL+'/generateOrderID').then(response => {
         this.order.id = response.data;
       }).catch(error => {
         console.log(error);
       });
 
-      await axios.post('http://localhost:8080/api/cp/saveOrder', this.order).then(response => {
+      await axios.post(process.env.VUE_APP_BASE_URL+'/saveOrder', this.order).then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);
@@ -247,7 +246,7 @@ export default {
         })
       })
 
-      await axios.post('http://localhost:8080/api/cp/saveOrderItems', this.orderItems).then(response => {
+      await axios.post(process.env.VUE_APP_BASE_URL+'/saveOrderItems', this.orderItems).then(response => {
         console.log(response);
       }).catch(error => {
         console.log(error);

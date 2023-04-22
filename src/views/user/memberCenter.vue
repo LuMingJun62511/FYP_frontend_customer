@@ -35,13 +35,13 @@
       <div class="statistic-container" style="background-color: #f2f2f2; height:300px">
         <p style="text-align: center">statistics</p>
         <el-form>
-          <el-form-item label="总消费额">
+          <el-form-item label="total consumption">
             <p>{{userStatistics.consumeAmount}}</p>
           </el-form-item>
-          <el-form-item label="总订单数">
+          <el-form-item label="Total Orders">
             <p>{{userStatistics.orderCount}}</p>
           </el-form-item>
-          <el-form-item label="loyal points数">
+          <el-form-item label="number of loyal points">
             <p>{{userInfo.loyalPoints}}</p>
           </el-form-item>
         </el-form>
@@ -83,17 +83,17 @@ export default {
   },
   methods:{
     modifyProfile(){
-      axios.post('http://localhost:8080/api/cp/updateProfile',this.userInfo).then(response => {
+      axios.post(process.env.VUE_APP_BASE_URL+'/updateProfile',this.userInfo).then(response => {
         console.log(response.status);
       })
     }
   },
   created() {
-    axios.get('http://localhost:8080/api/cp/userProfile/'+this.$store.state.userId).then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/userProfile/'+this.$store.state.userId).then(response => {
       this.userInfo = response.data;
       // console.log(this.userInfo);
     })
-    axios.get('http://localhost:8080/api/cp/userStatistics/'+this.$store.state.userId).then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/userStatistics/'+this.$store.state.userId).then(response => {
       this.userStatistics = response.data;
       // console.log(this.userStatistics)
     })

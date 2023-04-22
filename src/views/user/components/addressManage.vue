@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 1100px; background-color: #f2f2f2;margin: auto">
+  <div class="addresses-container" style="width: 1100px; background-color: #f2f2f2;margin: auto">
     <el-table
         :data="addresses"
         style="width: 1050px;margin-left: auto;margin-right: auto;margin-top: 20px">
@@ -52,17 +52,17 @@
     </el-table>
   </div>
 
-  <div style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
+  <div class="create-new-address" style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
     <el-row>
       <el-col :span="4">
-        <p>创建新地址</p>
+        <p>create new address</p>
       </el-col>
       <el-col :span="20">
         <el-form>
-          <el-form-item label="收货人姓名">
+          <el-form-item label="receiver name">
             <el-input v-model="newAddress.name" style="width: 75%"></el-input>
           </el-form-item>
-          <el-form-item label="收货人电话">
+          <el-form-item label="receiver phone">
             <el-input v-model="newAddress.phoneNumber" style="width: 75%"></el-input>
           </el-form-item>
           <el-form-item label="line1">
@@ -77,7 +77,7 @@
         </el-form>
       </el-col>
     </el-row>
-    <div style="display: flex; justify-content: center;">
+    <div class="save-button" style="display: flex; justify-content: center;">
       <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
     </div>
   </div>
@@ -108,13 +108,13 @@ export default {
   methods: {
     async saveNewAddress() {
       this.newAddress.id = this.generateId();
-      await axios.post('http://localhost:8080/api/cp/updateAddress', this.newAddress)
+      await axios.post(process.env.VUE_APP_BASE_URL+'/updateAddress', this.newAddress)
           .then(response => {
           })
           .catch(error => {
             console.log(error);
           });
-      await axios.get('http://localhost:8080/api/cp/getAddresses/'+this.$store.state.userId)
+      await axios.get(process.env.VUE_APP_BASE_URL+'/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
           })
@@ -134,7 +134,7 @@ export default {
     },
 
     getAddresses(){
-      axios.get('http://localhost:8080/api/cp/getAddresses/'+this.$store.state.userId)
+      axios.get(process.env.VUE_APP_BASE_URL+'/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
             // console.log(response);
@@ -153,7 +153,7 @@ export default {
     async deleteAddress(id){
       const index = this.addresses.findIndex(item => item.id === id);
       this.addresses.splice(index, 1);
-      await axios.post('http://localhost:8080/api/cp/deleteAddress/'+id)
+      await axios.post(process.env.VUE_APP_BASE_URL+'/deleteAddress/'+id)
           .then(response => {
           })
           .catch(error => {

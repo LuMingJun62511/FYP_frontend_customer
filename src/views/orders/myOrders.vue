@@ -1,5 +1,5 @@
 <template>
-  <p>展示所有订单，订单完成的，可以点击进入receipt,订单未完成的，就算了</p>
+<!--  <p>展示所有订单，订单完成的，可以点击进入receipt,订单未完成的，就算了</p>-->
   <div style="width: 800px">
     <el-table
         :data="orders"
@@ -66,13 +66,13 @@ export default {
     }
   },
   async created() {
-    await axios.get('http://localhost:8080/api/cp/ordersById/' + this.$store.state.userId).then(response => {
+    await axios.get(process.env.VUE_APP_BASE_URL+'/ordersById/' + this.$store.state.userId).then(response => {
           this.orders = response.data;
         }).catch(error => {
           console.log(error);
         });
     await this.orders.forEach(order =>{
-      axios.get('http://localhost:8080/api/cp/orderItems/'+order.id).then(response => {
+      axios.get(process.env.VUE_APP_BASE_URL+'/orderItems/'+order.id).then(response => {
         let tempOrderItems = []
         response.data.forEach(item=>{
           tempOrderItems.push({

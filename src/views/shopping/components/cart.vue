@@ -9,15 +9,15 @@
         <el-dropdown-item v-for="item in $store.state.cart" :key="item.id">
           <p style="text-align: center;">{{ item.name }} --- {{ item.amount }}*{{ item.price }} = {{ item.amount * item.price }} euros </p>
           <el-input-number size="small" v-model="item.amount" :min="1" ></el-input-number>
-          <el-button size="small" @click="$store.commit('Cart_delete',item)">删除</el-button>
+          <el-button size="small" @click="$store.commit('Cart_delete',item)">Delete</el-button>
         </el-dropdown-item>
       </el-dropdown-menu>
       <div v-if="calculateAmount===0">
-        <p style="text-align: center">购物车里还没有物品，快去购物吧</p>
+        <p style="text-align: center">There are no items in the shopping cart</p>
       </div>
       <div v-if="calculateAmount!==0" style="display: flex; justify-content: center;">
-        <p style="margin-right: 16px;">共{{calculateAmount}}商品，总计{{calculatePrice}}euros</p>
-        <el-button type="primary" @click="handleJumpCheckout">结算</el-button>
+        <p style="margin-right: 16px;">Total {{calculateAmount}} products, total {{calculatePrice}}euros</p>
+        <el-button type="primary" @click="handleJumpCheckout">checkout</el-button>
       </div>
     </template>
   </el-dropdown>

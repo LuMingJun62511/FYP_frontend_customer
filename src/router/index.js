@@ -31,11 +31,11 @@ const routes = [
     name: 'memberCenter',
     component: () => import('@/views/user/memberCenter.vue'),
   },
-  {
-    path: '/addressManage',
-    name: 'addressManage',
-    component: () => import('@/views/checkout/components/addressBoard'),
-  },
+  // {
+  //   path: '/addressManage',
+  //   name: 'addressManage',
+  //   component: () => import('@/views/checkout/components/addressBoard'),
+  // },
   {
     path: '/myOrders',
     name: 'myOrders',

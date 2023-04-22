@@ -5,11 +5,11 @@
         class="header-row"
         align="middle"
     >
-      <el-col :span="8" >
-        <p>统一每周一配送，请于每周天晚12点前下单</p>
+      <el-col :span="10" >
+        <p>Delivery at every Monday, order before Sunday midnight please</p>
       </el-col>
 
-      <el-col :span="3" :offset="4">
+      <el-col :span="3" :offset="2">
         <router-link to="/home" style="text-decoration: none">
           log in
         </router-link>
@@ -36,11 +36,11 @@
         class="header-row"
         align="middle"
     >
-      <el-col :span="8" >
-        <p>统一每周一配送，请于每周天晚12点前下单</p>
+      <el-col :span="10" >
+        <p>Delivery at every Monday, order before Sunday midnight please</p>
       </el-col>
 
-      <el-col :span="3" :offset="7">
+      <el-col :span="3" :offset="5">
         <router-link to="/home" style="text-decoration: none">
           home page
         </router-link>

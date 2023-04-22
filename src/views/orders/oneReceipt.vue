@@ -98,7 +98,7 @@ export default {
     },
 
     async handleSubmitReturnApply() {
-      await axios.post('http://localhost:8080/api/cp/returnItem', {
+      await axios.post(process.env.VUE_APP_BASE_URL+'/returnItem', {
         id: {
           batchId: this.itemHandling.batchId,
           productId: this.itemHandling.product_id,
@@ -119,7 +119,7 @@ export default {
       })
 
       // 改完记得更新一下
-      await axios.get('http://localhost:8080/api/cp/receiptItems/' + this.$route.params.id).then(response => {
+      await axios.get(process.env.VUE_APP_BASE_URL+'/receiptItems/' + this.$route.params.id).then(response => {
         this.items = [];
         response.data.forEach(item => {
           this.items.push({
@@ -138,11 +138,8 @@ export default {
   created() {
     // 很棒的是，现在status 2 就是标识pending了，
     this.receipt.id = this.$route.params.id
-    //     axios.get('http://localhost:8080/api/cp/receiptById/' + ).then(response => {
-    //  response.data.id
-    // })
 
-    axios.get('http://localhost:8080/api/cp/receiptItems/' + this.$route.params.id).then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/receiptItems/' + this.$route.params.id).then(response => {
       // console.log(response.data)
       response.data.forEach(item => {
         this.items.push({
@@ -155,8 +152,6 @@ export default {
         })
       })
     })
-
-
   }
 }
 </script>

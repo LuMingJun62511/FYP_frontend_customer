@@ -3,7 +3,7 @@
   <el-row class="display1">
     <el-col :span="4" style="background-color: #f2f2f2">
       <el-row>
-        <el-col>所有商品种类</el-col>
+        <el-col>All categories</el-col>
         <el-col v-for="category in categories">
           <el-divider />
           <p @click="handleJumpToViewProducts(category.categoryID)" >
@@ -16,32 +16,32 @@
     <el-col :span="13" :offset="1" style="background-color: #f2f2f2" >
       <el-carousel height="350px">
         <el-carousel-item :key="1">
-          广告1
+          Advertisement 1 to be placed here
         </el-carousel-item>
         <el-carousel-item :key="2">
-          广告2
+          Advertisement 2 to be placed here
         </el-carousel-item>
         <el-carousel-item :key="3">
-          广告3
+          Advertisement 3 to be placed here
         </el-carousel-item>
         <el-carousel-item :key="4">
-          广告4
+          Advertisement 4 to be placed here
         </el-carousel-item>
       </el-carousel>
     </el-col>
 
     <el-col :span="5" :offset="1" style="background-color: #f2f2f2">
       <el-row>
-        <el-col>整顿公告</el-col>
-        <el-col>退货公告</el-col>
-        <el-col>优惠公告</el-col>
+        <el-col>Rectification Announcement</el-col>
+        <el-col>Return Rules Announcement</el-col>
+        <el-col>Offer Announcement</el-col>
       </el-row>
     </el-col>
   </el-row>
 
   <el-row class="display2">
     <el-col :span="11">
-      <p>热销区</p>
+      <p>Hot Sale Products Area</p>
       <div class="scroll-container">
         <el-scrollbar style="width: 100%; white-space: nowrap;">
           <div>
@@ -51,7 +51,7 @@
       </div>
     </el-col>
     <el-col :span="11" :offset="2">
-      <p>新品区</p>
+      <p>New Items Area</p>
       <div class="scroll-container">
         <el-scrollbar style="width: 100%; white-space: nowrap;">
           <div>
@@ -82,7 +82,7 @@ export default {
   },
   methods:{
     handleJumpToViewProducts(id){
-      axios.get('http://localhost:8080/api/cp/productsByCategory?id=' + id)
+      axios.get(process.env.VUE_APP_BASE_URL+'/productsByCategory?id=' + id)
           .then(response => {
             let res = []
             response.data.forEach(product =>{
@@ -95,7 +95,7 @@ export default {
     }
   },
   created() {
-    axios.get('http://localhost:8080/api/cp/findCategories').then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/findCategories').then(response => {
       this.categories = []
       response.data.forEach(category =>{
         this.categories.push({
@@ -105,7 +105,7 @@ export default {
       })
     })
 
-    axios.get('http://localhost:8080/api/cp/findHotSale').then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/findHotSale').then(response => {
       let res = []
       response.data.forEach(product =>{
         product.amount = 1
@@ -114,7 +114,7 @@ export default {
       this.$store.commit('SET_HOT_SALE_PRODUCTS', res)
     })
 
-    axios.get('http://localhost:8080/api/cp/findNew').then(response => {
+    axios.get(process.env.VUE_APP_BASE_URL+'/findNew').then(response => {
       let res = []
       response.data.forEach(product =>{
         product.amount = 1

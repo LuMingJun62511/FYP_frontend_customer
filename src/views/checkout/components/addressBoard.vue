@@ -5,12 +5,12 @@
         <div style="display: flex;">
           <address-card v-for="address in addresses" :address="address" :key="address.id"></address-card>
           <div style="width: 300px;height: 330px">
-            <p>创建新地址</p>
+            <p>create a new address</p>
             <el-form>
-              <el-form-item label="收货人姓名">
+              <el-form-item label="Receiver name">
                 <el-input v-model="newAddress.name"></el-input>
               </el-form-item>
-              <el-form-item label="收货人电话">
+              <el-form-item label="Receiver phone">
                 <el-input v-model="newAddress.phoneNumber"></el-input>
               </el-form-item>
               <el-form-item label="line1">
@@ -62,13 +62,13 @@ export default {
   methods: {
     async saveInfo() {
       this.newAddress.id = this.generateId();
-      await axios.post('http://localhost:8080/api/cp/updateAddress', this.newAddress)
+      await axios.post(process.env.VUE_APP_BASE_URL+'/updateAddress', this.newAddress)
           .then(response => {
           })
           .catch(error => {
             console.log(error);
           });
-      await axios.get('http://localhost:8080/api/cp/getAddresses/'+this.$store.state.userId)
+      await axios.get(process.env.VUE_APP_BASE_URL+'/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
           })
@@ -88,11 +88,9 @@ export default {
     },
 
     getAddresses(){
-      axios.get('http://localhost:8080/api/cp/getAddresses/'+this.$store.state.userId)
+      axios.get(process.env.VUE_APP_BASE_URL+'/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
-            // console.log(response);
-            // console.log(this.addresses)
           })
           .catch(error => {
             console.log(error);

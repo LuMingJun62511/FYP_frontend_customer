@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar-container">
     <div class="icon-container">
-      <p>标志</p>
+      <p>Logo</p>
     </div>
     <div class="search-container">
       <div style="display: flex; align-items: center; justify-content: center;">
@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     search() {
-      axios.get('http://localhost:8080/api/cp/productsNameLike?name=' + this.searchItem)
+      axios.get(process.env.VUE_APP_BASE_URL+'/productsNameLike?name=' + this.searchItem)
           .then(response => {
             let res = []
             response.data.forEach(product =>{

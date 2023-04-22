@@ -3,12 +3,12 @@
   <el-row>
     <el-col :span="8">
       <el-card>
-        <p>商品图片</p>
+        <p>product picture to be placed here</p>
       </el-card>
     </el-col>
     <el-col :span="16">
       <el-form>
-        <p>商品信息</p>
+        <p>product information</p>
       </el-form>
     </el-col>
   </el-row>
@@ -16,10 +16,10 @@
   <p class="name">name: {{product.name}}</p>
   <p class="price">price: {{product.price}} euros</p>
   <el-input-number v-model="product.amount" :min="1"></el-input-number>
-        <div v-if="product.isLow===1" style="text-align: center; background-color: #da607a">
-          <p>提示，当前商品处于缺货状态，如果您一定要购买，可能收到商家为您选择的替代品</p>
-        </div>
-  <el-button type="text" @click="handlePutInCart()">加入购物车</el-button>
+  <el-button type="text" @click="handlePutInCart()">add to the cart</el-button>
+  <div v-if="product.isLow===1" style="text-align: center; background-color: #da607a">
+    <p>Note that the current product is out of stock, if you must buy it, you may receive a substitute selected by the merchant for you</p>
+  </div>
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
     };
   },
   created() {
-    axios.get('http://localhost:8080/api/cp/oneProduct/' + this.$route.params.id)
+    axios.get(process.env.VUE_APP_BASE_URL+'/oneProduct/' + this.$route.params.id)
         .then(response => {
           this.product = response.data
           this.product.amount = 1
