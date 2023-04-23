@@ -24,7 +24,7 @@ const routes = [
   {
     path: '/checkout',
     name: 'checkout',
-    component: () => import('@/views/checkout/checkoutPage.vue'),
+    component: () => import('@/views/checkout/CheckoutPage.vue'),
   },
   {
     path: '/memberCenter',

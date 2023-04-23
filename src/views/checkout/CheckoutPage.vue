@@ -2,7 +2,7 @@
   <el-card style="align-content: center">
     <el-row>
       <el-col :span="3">
-        <p>mark</p>
+        <img src="@/assets/icons/logo.png" style="width: 90px;height: 90px;margin-left: 30px">
       </el-col>
       <el-col :span="5">
         <p>Process of placing an order</p>
@@ -85,9 +85,9 @@
         <el-card style="width: 650px; background-color: #f2f2f2; margin-left: auto;margin-right:auto ;margin-top: 10px" >
           <p>Please confirm your order</p>
           <el-card>
-            <p>Your chosen delivery time is{{deliveryTimeChosen}}</p>
-            <p>The shipping address you choose is{{Address}}</p>
-            <p>Your shipping total{{calculateDelivery}}</p>
+            <p>Your chosen delivery time is&nbsp;{{deliveryTimeChosen}}</p>
+            <p>The shipping address you choose is&nbsp;{{Address}}</p>
+            <p>Your shipping total&nbsp;{{calculateDelivery}}&nbsp;euros</p>
             <div style="width: 600px">
               <el-table
                   :data="$store.state.cart"
@@ -109,7 +109,7 @@
                 </el-table-column>
               </el-table>
             </div>
-            <p style="text-align: center;">You need to pay a total of{{calculatePrice+calculateDelivery}}euros</p>
+            <p style="text-align: center;">You need to pay a total of&nbsp;{{calculatePrice+calculateDelivery}}&nbsp;euros</p>
             <el-row>
               <el-col :span="4" :offset="2">
                 <el-button @click="steps = 1">previous step</el-button>
