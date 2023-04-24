@@ -5,7 +5,7 @@
       <h2 style="text-align: center">profile</h2>
       <el-form :model="userInfo" label-width="120px">
         <el-form-item label="user name">
-          <el-input v-model="userInfo.username" style="width: 60%"/>
+          <el-input class="name-input" v-model="userInfo.username" style="width: 60%"/>
         </el-form-item>
 
         <el-form-item label="gender">
@@ -16,11 +16,11 @@
         </el-form-item>
 
         <el-form-item label="phone number">
-          <el-input v-model="userInfo.phone" style="width: 60%"/>
+          <el-input class="phone-input" v-model="userInfo.phone" style="width: 60%"/>
         </el-form-item>
 
         <el-form-item label="personalized signature">
-          <el-input v-model="userInfo.personalizedSignature" type="textarea" style="width: 90%"/>
+          <el-input class="sign-input" v-model="userInfo.personalizedSignature" type="textarea" style="width: 90%"/>
         </el-form-item>
 
         <el-form-item>
@@ -33,15 +33,15 @@
       <h2 style="text-align: center">statistics</h2>
       <el-form>
         <el-form-item class="statistic-item">
-          <label class="statistic-label">total consumption: </label>
+          <label class="statistic-label">Total consumption: </label>
           <p class="statistic-value">{{userStatistics.consumeAmount}}</p>
         </el-form-item>
         <el-form-item class="statistic-item">
-          <label class="statistic-label">total order count: </label>
+          <label class="statistic-label">Total order count: </label>
           <p class="statistic-value">{{userStatistics.orderCount}}</p>
         </el-form-item>
         <el-form-item class="statistic-item">
-          <label class="statistic-label">total loyalPoints: </label>
+          <label class="statistic-label">Loyal points: </label>
           <p class="statistic-value">{{userInfo.loyalPoints}}</p>
         </el-form-item>
       </el-form>
