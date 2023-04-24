@@ -3,52 +3,54 @@
 <!--  <p>就可能出现，同订单，同商品名，同批次的情况，这就出大问题</p>-->
 <!--  <p>解决问题的方法就是加个唯一id,因为现在这情况下，这东西已经不唯一了，就得改</p>-->
 <!--  <p>反正暂时就这样吧，也算是学了个教训，主键设计</p>-->
-  <el-table :data="items">
-    <el-table-column
-        label="product id"
-        prop="product_id"
-        width="200">
-    </el-table-column>
-    <el-table-column
-        label="product name"
-        prop="product_name"
-        width="200">
-    </el-table-column>
-    <el-table-column
-        label="amount"
-        prop="amount"
-        width="200">
-    </el-table-column>
-    <el-table-column
-        label="price"
-        prop="price"
-        width="200">
-    </el-table-column>
-    <el-table-column
-        label="status"
-        prop="status"
-        width="200">
-      <template v-slot="props">
-        <el-button v-if="props.row.status !== 2" type="primary" @click="handleChooseToReturn(props.row.product_id)">return this</el-button>
-        <p v-else>dealing your apply</p>
-      </template>
-    </el-table-column>
-  </el-table>
+  <el-card style="width: 1000px; margin: auto">
+    <el-table :data="items">
+      <el-table-column
+          label="product id"
+          prop="product_id"
+          width="200">
+      </el-table-column>
+      <el-table-column
+          label="product name"
+          prop="product_name"
+          width="200">
+      </el-table-column>
+      <el-table-column
+          label="amount"
+          prop="amount"
+          width="200">
+      </el-table-column>
+      <el-table-column
+          label="single price"
+          prop="price"
+          width="200">
+      </el-table-column>
+      <el-table-column
+          label="status"
+          prop="status"
+          width="200">
+        <template v-slot="props">
+          <el-button v-if="props.row.status !== 2" type="primary" @click="handleChooseToReturn(props.row.product_id)">return this</el-button>
+          <p v-else>dealing your apply</p>
+        </template>
+      </el-table-column>
+    </el-table>
+  </el-card>
 
-  <el-form>
-    <el-form-item label="product name">
-      <p style="width: 75%">{{itemHandling.product_name}}</p>
-    </el-form-item>
-    <el-form-item label="amount">
+  <el-card style="width: 400px; margin-left: auto;margin-right: auto;margin-top: 20px ">
+    <p>product name: {{itemHandling.product_name}}</p>
+    <div style="display: flex;">
+      <p>amount:&nbsp;</p>
       <el-input-number v-model="itemHandling.amount" :min="1" :max="itemHandling.maxAmount"></el-input-number>
-    </el-form-item>
-    <el-form-item label="price">
-      <p style="width: 75%">{{itemHandling.price}}</p>
-    </el-form-item>
-  </el-form>
-  <div style="display: flex; justify-content: center; margin-top: 5px">
-    <el-button @click="handleSubmitReturnApply">submit your apply</el-button>
-  </div>
+    </div>
+    <p>single price: {{itemHandling.price}}</p>
+    <div style="display: flex; justify-content: center; margin-top: 5px">
+      <el-button @click="handleSubmitReturnApply">submit your apply</el-button>
+    </div>
+  </el-card>
+
+  <p style="text-align: center">Our staff will come to pick up the returned goods every Monday</p>
+
 </template>
 
 <script>

@@ -1,6 +1,7 @@
 <template>
 <!--  <p>展示所有订单，订单完成的，可以点击进入receipt,订单未完成的，就算了</p>-->
-  <div style="width: 800px">
+
+  <el-card style="width: 900px; margin: auto">
     <el-table
         :data="orders"
         style="width: 100%">
@@ -28,7 +29,7 @@
           width="200">
       </el-table-column>
       <el-table-column
-          label="payAmount"
+          label="amount paid"
           prop="payAmount"
           width="200">
       </el-table-column>
@@ -47,7 +48,7 @@
         </template>
       </el-table-column>
     </el-table>
-  </div>
+  </el-card>
 </template>
 
 <script>

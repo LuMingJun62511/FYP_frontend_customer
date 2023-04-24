@@ -24,7 +24,9 @@ export default {
 
   setup() {
     const store = useStore();
-    const stripePromise = loadStripe(process.env.VUE_APP_STRIPE_pk);
+    const stripePromise = loadStripe(process.env.VUE_APP_STRIPE_pk,{
+      locale: 'en-GB',
+    });
     const cardElement = ref(null);
     const clientSecret = ref('');
     const cardElementValue = ref(null);
