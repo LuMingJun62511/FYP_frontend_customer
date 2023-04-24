@@ -60,20 +60,20 @@
 
   <el-row class="display2">
     <el-col :span="11">
-      <p>Hot Sale Products Area</p>
+      <h4>Hot Sale Products Area</h4>
       <div class="scroll-container">
         <el-scrollbar style="width: 100%; white-space: nowrap;">
-          <div>
+          <div class="hot-sale-product-cards">
             <product-card v-for="product in hot_sale_products" :product="product" style="display: inline-block; margin-right: 10px;"></product-card>
           </div>
         </el-scrollbar>
       </div>
     </el-col>
     <el-col :span="11" :offset="2">
-      <p>New Items Area</p>
+      <h4>New Items Area</h4>
       <div class="scroll-container">
         <el-scrollbar style="width: 100%; white-space: nowrap;">
-          <div>
+          <div class="new-product-cards">
             <product-card v-for="product in new_products" :product="product" style="display: inline-block; margin-right: 10px;"></product-card>
           </div>
         </el-scrollbar>
