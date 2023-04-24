@@ -1,6 +1,8 @@
 <template>
   <search-bar></search-bar>
-  <product-list :products="computedProducts"></product-list>
+  <div class="searched-products-container">
+    <product-list :products="computedProducts"></product-list>
+  </div>
 </template>
 <script>
 import ProductList from "@/views/shopping/components/productList.vue";

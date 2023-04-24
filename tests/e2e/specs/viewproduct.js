@@ -1,7 +1,12 @@
 describe('Test view products related', () => {
-    it('Visits the app root url', () => {
-        cy.visit('/memberCenter')
-        cy.contains('h1', 'Welcome to Your Vue.js App')
-    })
+    it('Search for items with name similar to inputed', () => {
+        cy.visit('/home')
+        cy.get('.search-bar-input').type('egg')
+        cy.get('.search-bar-button').click()
+        cy.get('.searched-products-container').find('.el-card__body').should('have.length', 5)
 
+        cy.get('.search-bar-input').type('pep')
+        cy.get('.search-bar-button').click()
+        cy.get('.searched-products-container').find('.el-card__body').should('have.length', 9)
+    })
 })
