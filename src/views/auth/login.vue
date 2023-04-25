@@ -1,7 +1,3 @@
-<!--&lt;!&ndash;这个base url有问题，需要去掉多余的三个字符&ndash;&gt;-->
-
-<!---->
-
 <!--<template xmlns:el-col="http://www.w3.org/1999/html">-->
 <!--  <div style="height: 10%;">-->
 <!--    <el-row-->

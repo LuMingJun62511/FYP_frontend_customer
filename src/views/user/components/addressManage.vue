@@ -54,11 +54,6 @@
 
   <div class="create-new-address" style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
     <h3 style="text-align: center">create new address</h3>
-<!--    <el-row>-->
-<!--      <el-col :span="4">-->
-<!--        <p>create new address</p>-->
-<!--      </el-col>-->
-<!--      <el-col :span="20">-->
         <el-form>
           <el-form-item label="receiver name">
             <el-input v-model="newAddress.name" style="width: 75%"></el-input>
@@ -76,8 +71,6 @@
             <el-input v-model="newAddress.city" style="width: 75%"></el-input>
           </el-form-item>
         </el-form>
-<!--      </el-col>-->
-<!--    </el-row>-->
     <div class="save-button" style="display: flex; justify-content: center;">
       <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
     </div>
@@ -138,8 +131,6 @@ export default {
       axios.get(process.env.VUE_APP_BASE_URL+'/getAddresses/'+this.$store.state.userId)
           .then(response => {
             this.addresses = response.data;
-            // console.log(response);
-            // console.log(this.addresses)
           })
           .catch(error => {
             console.log(error);
@@ -154,14 +145,11 @@ export default {
     async deleteAddress(id){
       const index = this.addresses.findIndex(item => item.id === id);
       this.addresses.splice(index, 1);
-      await axios.post(process.env.VUE_APP_BASE_URL+'/deleteAddress/'+id)
-          .then(response => {
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      await axios.post(process.env.VUE_APP_BASE_URL+'/deleteAddress/'+id).then(response => {
+      }).catch(error => {
+        console.log(error);
+      });
     }
-
   },
   created() {
     this.getAddresses();

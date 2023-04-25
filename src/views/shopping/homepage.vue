@@ -20,19 +20,15 @@
       <el-carousel height="350px">
         <el-carousel-item :key="1">
           <img src="@/assets/images/ad1.jpg" alt="advertisement 1" />
-<!--          Advertisement 1 to be placed here-->
         </el-carousel-item>
         <el-carousel-item :key="2">
           <img src="@/assets/images/ad2.jpg" alt="advertisement 2" />
-<!--          Advertisement 2 to be placed here-->
         </el-carousel-item>
         <el-carousel-item :key="3">
           <img src="@/assets/images/ad3.jpg" alt="advertisement 3" />
-<!--          Advertisement 3 to be placed here-->
         </el-carousel-item>
         <el-carousel-item :key="4">
           <img src="@/assets/images/ad4.jpg" alt="advertisement 4" />
-<!--          Advertisement 4 to be placed here-->
         </el-carousel-item>
       </el-carousel>
     </el-col>

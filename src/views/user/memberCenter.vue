@@ -69,8 +69,6 @@ export default {
         gender:'',
         personalizedSignature:'',
         loyalPoints: 0,
-
-
       },
       userStatistics: {
         consumeAmount: 0,
@@ -90,13 +88,10 @@ export default {
   created() {
     axios.get(process.env.VUE_APP_BASE_URL+'/userProfile/'+this.$store.state.userId).then(response => {
       this.userInfo = response.data;
-      // console.log(this.userInfo);
     })
     axios.get(process.env.VUE_APP_BASE_URL+'/userStatistics/'+this.$store.state.userId).then(response => {
       this.userStatistics = response.data;
-      // console.log(this.userStatistics)
     })
-
   },
   components: {AddressManage},
 }

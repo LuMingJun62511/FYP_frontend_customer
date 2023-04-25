@@ -28,9 +28,6 @@
 export default {
   name: "productCard",
   props:['product'],
-  // created() {
-  //   console.log("看看pic"+this.product.pic)
-  // },
   methods:{
     handlePutInCart(){
       //首先看有没有

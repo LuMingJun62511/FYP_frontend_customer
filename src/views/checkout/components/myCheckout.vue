@@ -40,7 +40,6 @@ export default {
       });
     });
 
-
     const submitPayment = async () => {
       const stripe = await stripePromise;
       const {paymentMethod, error} = await stripe.createPaymentMethod({
@@ -58,8 +57,6 @@ export default {
       });
 
       if (result.error) {
-        // Show error message to user
-        // console.log(result.error.message);
       } else {
         // Payment successful
         console.log('Payment succeeded!');

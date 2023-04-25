@@ -67,7 +67,6 @@ export default createStore({
     Cart_add: (state,commo) => {
       const newCommo = { ...commo };
       state.cart.push(newCommo);
-      // state.cart.push(commo)
     },
     Cart_modify: (state,commo) =>{
       const index = state.cart.findIndex(c => c.id === commo.id)

@@ -34,10 +34,6 @@ export default {
       pageSizes: [4, 8, 12, 16]
     };
   },
-  created() {
-    console.log("Products 有问题？");
-    console.log(this.products);
-  },
   computed: {
     paginatedProducts() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
