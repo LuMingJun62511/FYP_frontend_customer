@@ -87,7 +87,7 @@
 import axios from "axios";
 import ShoppingHeader from "@/views/shopping/components/searchBar.vue";
 import SearchBar from "@/views/shopping/components/searchBar.vue";
-import ProductCard from "@/views/shopping/components/productCard.vue";
+import ProductCard from "@/views/shopping/components/ProductCard.vue";
 
 export default {
   name: "homepage",
