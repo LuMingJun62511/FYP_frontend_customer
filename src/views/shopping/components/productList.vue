@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import ProductCard from "@/views/shopping/components/ProductCard.vue";
+import ProductCard from "@/views/shopping/components/productCard.vue";
 
 export default {
   name: "ProductList",
