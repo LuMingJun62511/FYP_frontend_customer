@@ -80,6 +80,9 @@ export default createStore({
         state.cart.splice(index, 1)
       }
     },
+    Cart_clear: (state) =>{
+      state.cart = []
+    }
 
   },
   actions: {

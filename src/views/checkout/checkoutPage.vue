@@ -131,7 +131,7 @@
           </el-radio-group>
           <my-checkout v-if="paymentMethod === 1"></my-checkout>
           <div>
-            <el-button v-if="paymentMethod === 2">Finish</el-button>
+            <el-button v-if="paymentMethod === 2" @click="handleFinishOrder">Finish</el-button>
           </div>
         </el-card>
       </div>
@@ -200,6 +200,10 @@ export default {
     handleGoBackToShop() {
       this.$router.push({path: '/home'});
     },
+    handleFinishOrder() {
+      this.$store.commit("Cart_clear");
+      this.$router.push({path: '/paymentSuccess'});
+    },
     async handleCreateOrder() {
       this.steps = 3;
       // 这时候address改了，需要刷新一下,需要更新的还有totalAmount,payAmount,note
@@ -207,11 +211,12 @@ export default {
       this.order.totalAmount = this.calculatePrice;
       if(this.order.totalAmount < 50){
         this.order.deliveryAmount = 5;
-        this.order.payAmount= this.calculatePrice+5;
+        this.order.payAmount = this.calculatePrice+5;
       }else{
         this.order.deliveryAmount = 0;
-        this.order.payAmount= this.calculatePrice;
+        this.order.payAmount = this.calculatePrice;
       }
+      this.order.loyalPointGained = this.calculatePrice;
       this.order.note= this.deliveryTimeChosen;
 
       await axios.get(process.env.VUE_APP_BASE_URL+'/generateOrderID').then(response => {
@@ -239,7 +244,7 @@ export default {
             id: item.id,
           },
           amount: item.amount,
-          total_price: item.amount * item.price,
+          totalPrice: item.amount * item.price,
         })
       })
 

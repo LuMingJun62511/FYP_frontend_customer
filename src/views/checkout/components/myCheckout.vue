@@ -18,6 +18,8 @@
 import {onMounted, ref} from 'vue';
 import {loadStripe} from '@stripe/stripe-js';
 import { useStore } from 'vuex';
+// import { useRouter } from 'vue-router';
+import router from "@/router";
 
 export default {
   name: 'myCheckout',
@@ -59,10 +61,10 @@ export default {
       if (result.error) {
       } else {
         // Payment successful
-        console.log('Payment succeeded!');
+        store.commit("Cart_clear");
+        await router.push('/paymentSuccess');
       }
     }
-
 
     onMounted(async () => {
       const stripe = await stripePromise;
