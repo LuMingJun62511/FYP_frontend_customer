@@ -21,8 +21,8 @@
           width="200">
       </el-table-column>
       <el-table-column
-          label="single price"
-          prop="price"
+          label="total price"
+          prop="totalPrice"
           width="200">
       </el-table-column>
       <el-table-column
@@ -30,7 +30,8 @@
           prop="status"
           width="200">
         <template v-slot="props">
-          <el-button v-if="props.row.status !== 2" type="primary" @click="handleChooseToReturn(props.row.product_id)">return this</el-button>
+          <el-button v-if="props.row.status !== 2 & props.row.amount !== 0" type="primary" @click="handleChooseToReturn(props.row.product_id)">return this</el-button>
+          <p v-else-if="props.row.amount === 0">your apply finished</p>
           <p v-else>dealing your apply</p>
         </template>
       </el-table-column>
@@ -70,7 +71,7 @@ export default {
           // product_id: 1,
           // product_name: 'test1',
           // amount: 1,
-          // price: 1,
+          // totalPrice: 1,
           // status: 1,
         // }
       ],
@@ -78,7 +79,8 @@ export default {
         product_id: null,
         product_name: null,
         amount: null,
-        price: null,
+        // price: null,
+        totalPrice: null,
         status: null,
         maxAmount: null,
       },
@@ -94,7 +96,7 @@ export default {
           this.itemHandling.maxAmount = item.amount;
           this.itemHandling.product_id = item.product_id;
           this.itemHandling.product_name = item.product_name;
-          this.itemHandling.price = item.price;
+          this.itemHandling.totalPrice = item.price;
         }
       })
     },
@@ -129,7 +131,8 @@ export default {
             product_id: item.product.id,
             product_name: item.product.name,
             amount: item.amount,
-            price: item.totalPrice/item.amount,
+            totalPrice: item.totalPrice,
+            // price: item.totalPrice/item.amount,
             status: item.status,
           })
         })
@@ -144,14 +147,26 @@ export default {
     axios.get(process.env.VUE_APP_BASE_URL+'/receiptItems/' + this.$route.params.id).then(response => {
       // console.log(response.data)
       response.data.forEach(item => {
-        this.items.push({
-          batchId: item.batch.id,
-          product_id: item.product.id,
-          product_name: item.product.name,
-          amount: item.amount,
-          price: item.totalPrice/item.amount,
-          status: item.status,
-        })
+        // if(item.amount === 0) {
+        //   this.items.push({
+        //     batchId: item.batch.id,
+        //     product_id: item.product.id,
+        //     product_name: item.product.name,
+        //     amount: item.amount,
+        //     price: item.totalPrice,
+        //     status: item.status,
+        //   })
+        // }else {
+          this.items.push({
+            batchId: item.batch.id,
+            product_id: item.product.id,
+            product_name: item.product.name,
+            amount: item.amount,
+            totalPrice: item.totalPrice,
+            status: item.status,
+          })
+        // }
+
       })
     })
   }

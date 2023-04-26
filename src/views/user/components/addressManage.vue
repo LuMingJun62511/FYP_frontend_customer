@@ -73,6 +73,7 @@
         </el-form>
     <div class="save-button" style="display: flex; justify-content: center;">
       <el-button type="primary" @click="saveNewAddress">Save this address</el-button>
+      <el-button type="primary" @click="clearContent">Clear the content</el-button>
     </div>
   </div>
 </template>
@@ -101,7 +102,10 @@ export default {
   },
   methods: {
     async saveNewAddress() {
-      this.newAddress.id = this.generateId();
+      if(this.newAddress.id === ''){
+        this.newAddress.id = this.generateId();
+      }
+      // this.newAddress.id = this.generateId();
       await axios.post(process.env.VUE_APP_BASE_URL+'/updateAddress', this.newAddress)
           .then(response => {
           })
@@ -115,6 +119,21 @@ export default {
           .catch(error => {
             console.log(error);
           });
+    },
+
+    clearContent(){
+      this.newAddress = {
+        id:'',
+        name:'',
+        member:{
+          id:this.$store.state.userId
+        },
+        phoneNumber:'',
+        line1:'',
+        line2:'',
+        city:'',
+        defaultStatus:0
+      }
     },
 
     generateId(){
@@ -139,7 +158,7 @@ export default {
 
     modifyAddress(id){
       const index = this.addresses.findIndex(item => item.id === id);
-      this.newAddress = this.addresses[index];
+      this.newAddress = { ...this.addresses[index]};
     },
 
     async deleteAddress(id){
