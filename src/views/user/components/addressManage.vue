@@ -53,7 +53,7 @@
   </div>
 
   <div class="create-new-address" style="width: 45%;background-color: #f2f2f2;margin-left: auto;margin-right: auto;margin-top: 20px">
-    <h3 style="text-align: center">create new address</h3>
+    <h3 style="text-align: center">manage your address</h3>
         <el-form>
           <el-form-item label="receiver name">
             <el-input v-model="newAddress.name" style="width: 75%"></el-input>
