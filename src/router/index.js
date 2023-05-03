@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import store from '@/store/index'
 
 const routes = [
   {
@@ -25,6 +25,16 @@ const routes = [
     path: '/checkout',
     name: 'checkout',
     component: () => import('@/views/checkout/checkoutPage.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter(to, from, next) {
+      if (to.meta.requiresAuth && !store.state.isLogin) {
+        next({ name: 'login' })
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/paymentSuccess',
@@ -35,16 +45,51 @@ const routes = [
     path: '/memberCenter',
     name: 'memberCenter',
     component: () => import('@/views/user/memberCenter.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter(to, from, next) {
+      if (to.meta.requiresAuth && !store.state.isLogin) {
+        next({ name: 'login' })
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/myOrders',
     name: 'myOrders',
     component: () => import('@/views/orders/myOrders.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter(to, from, next) {
+      if (to.meta.requiresAuth && !store.state.isLogin) {
+        next({ name: 'login' })
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/receipt/:id',
     name: 'receipt',
     component: () => import('@/views/orders/oneReceipt.vue'),
+    meta: {
+      requiresAuth: true
+    },
+    beforeEnter(to, from, next) {
+      if (to.meta.requiresAuth && !store.state.isLogin) {
+        next({ name: 'login' })
+      } else {
+        next()
+      }
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/auth/login.vue'),
   },
 ]
 
