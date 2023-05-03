@@ -29,7 +29,7 @@
               <el-button style="width: 70%;" type="primary" @click="handleLogin(loginForm)" >
                 login
               </el-button>
-              <router-link to="/register" style="text-decoration: none; text-align: center ">
+              <router-link to="/signup" style="text-decoration: none; text-align: center ">
                 Do not have an account yet? register here
               </router-link>
             </el-form-item>
